@@ -13,6 +13,7 @@ interface CheckSpellResult {
 
 export default function Page() {
   const [checkSpellResult, setCheckSpellResult] = useState<string>();
+  const [tempResult, setTempResult] = useState('');
   const [value, setValue] = useState<string>('');
 
   function rewriteSentence(sentence: string) {
@@ -36,6 +37,10 @@ export default function Page() {
   }
 
   const getSpellCheck = async (text: string) => {
+    setTempResult('');
+    if (!value) {
+      return;
+    }
     const result = await axios.get<CheckSpellResult[]>('/api/spell', {
       params: {
         text,
@@ -47,6 +52,13 @@ export default function Page() {
         computeText = computeText.replace(row.token, row.suggestions[0]);
       }
     });
+    setTempResult(
+      result.data
+        .map((row) => {
+          return `원문: ${row.token}\n추천: ${row.suggestions.join(' / ')}\n해설:${row.info}\n`;
+        })
+        .join('\n')
+    );
     setCheckSpellResult(rewriteSentence(computeText));
   };
 
@@ -81,6 +93,14 @@ export default function Page() {
           value={checkSpellResult}
         />
       </div>
+      {!!tempResult && (
+        <div className="flex flex-col gap-2 text-gray-500 mt-6">
+          <label>해석기 해설</label>
+          <div className="max-h-[200px] overflow-auto block whitespace-pre-wrap">
+            {tempResult}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
