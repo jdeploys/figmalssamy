@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export interface GrammerResult {
   // 원문
@@ -13,10 +13,9 @@ export interface GrammerResult {
 
 export const vaildator = {
   fetchText: (text: string) => {
-    return axios("https://mora-bot.kr/api/v1/grammar", {
-      method: "GET",
+    return axios.get('http://localhost:3000/api/spell', {
       params: {
-        string: text,
+        text,
       },
     });
   },
