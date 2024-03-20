@@ -66,6 +66,9 @@ importers:
       css-loader:
         specifier: ^6.10.0
         version: 6.10.0(webpack@5.90.3)
+      dotenv-webpack:
+        specifier: ^8.0.1
+        version: 8.0.1(webpack@5.90.3)
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -3943,9 +3946,30 @@ packages:
       tslib: 2.6.2
     dev: true
 
+  /dotenv-defaults@2.0.2:
+    resolution: {integrity: sha512-iOIzovWfsUHU91L5i8bJce3NYK5JXeAwH50Jh6+ARUdLiiGlYWfGw6UkzsYqaXZH/hjE/eCd/PlfM/qqyK0AMg==}
+    dependencies:
+      dotenv: 8.6.0
+    dev: true
+
+  /dotenv-webpack@8.0.1(webpack@5.90.3):
+    resolution: {integrity: sha512-CdrgfhZOnx4uB18SgaoP9XHRN2v48BbjuXQsZY5ixs5A8579NxQkmMxRtI7aTwSiSQcM2ao12Fdu+L3ZS3bG4w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      webpack: ^4 || ^5
+    dependencies:
+      dotenv-defaults: 2.0.2
+      webpack: 5.90.3(webpack-cli@5.1.4)
+    dev: true
+
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
+    dev: true
+
+  /dotenv@8.6.0:
+    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
+    engines: {node: '>=10'}
     dev: true
 
   /duplexer@0.1.2:

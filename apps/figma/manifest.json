@@ -12,7 +12,7 @@
   "ui": "dist/ui.html",
   "networkAccess": {
     "allowedDomains": [
-      "none"
+      "https://figmalssamy-web.vercel.app"
     ]
   },
   "documentAccess": "dynamic-page"

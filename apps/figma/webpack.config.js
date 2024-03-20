@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CreateFileWebpack = require("create-file-webpack");
@@ -54,6 +55,7 @@ module.exports = (env, argv) => ({
 
   // Tells Webpack to generate "ui.html" and to inline "ui.ts" into it
   plugins: [
+    new Dotenv(),
     new webpack.ProvidePlugin({
       Buffer: ["buffer", "Buffer"],
     }),

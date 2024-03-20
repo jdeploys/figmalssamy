@@ -13,10 +13,8 @@ export interface GrammerResult {
 
 export const vaildator = {
   fetchText: (text: string) => {
-    return axios.get('http://localhost:3000/api/spell', {
-      params: {
-        text,
-      },
-    });
+    return fetch(
+      `https://figmalssamy-web.vercel.app/api/spell?text=${encodeURIComponent(text)}`
+    );
   },
 };
