@@ -1,83 +1,20 @@
 {
   "name": "figmalssamy",
-  "version": "1.0.0",
-  "description": "피그마 한국어(한글) 문구 맞춤법 검사기",
-  "main": "dist/code.js",
+  "private": true,
   "scripts": {
-    "build": "webpack",
-    "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
-    "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
-    "watch": "npm run build -- --watch"
-  },
-  "author": "jdeploys",
-  "license": "MIT",
-  "figmaPlugin": {
-    "name": "figmalssamy",
-    "api": "1.0.0",
-    "main": "dist/code.js",
-    "editorType": [
-      "figma",
-      "figjam"
-    ],
-    "ui": "./ui.html"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@figma/eslint-plugin-figma-plugins": "^0.15.0",
-    "@figma/plugin-typings": "^1.88.0",
-    "@types/lodash": "^4.17.0",
-    "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "@webpack-cli/generators": "^3.0.0",
-    "create-file-webpack": "^1.0.2",
-    "css-loader": "^6.10.0",
-    "eslint": "^8.57.0",
-    "file-loader": "^6.2.0",
-    "html-loader": "^5.0.0",
-    "html-webpack-inline-source-plugin": "^0.0.10",
-    "html-webpack-plugin": "^5.6.0",
-    "inline-source-webpack-plugin": "^3.0.1",
-    "mini-css-extract-plugin": "^2.7.1",
-    "postcss": "^8.4.36",
-    "postcss-loader": "^8.1.1",
-    "postcss-preset-env": "^9.5.2",
-    "postcss-scss": "^4.0.9",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "prettier": "^3.2.5",
-    "react": "^18.2.0",
-    "react-dev-utils": "^12.0.1",
-    "react-dom": "^18.2.0",
-    "style-loader": "^3.3.4",
-    "tailwindcss": "^3.2.4",
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.4.2",
-    "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4"
+    "turbo": "latest"
   },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@figma/figma-plugins/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
-    "root": true,
-    "rules": {
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          "argsIgnorePattern": "^_",
-          "varsIgnorePattern": "^_",
-          "caughtErrorsIgnorePattern": "^_"
-        }
-      ]
-    }
-  },
-  "dependencies": {
-    "axios": "^1.6.8",
-    "hanspell": "^0.9.7",
-    "lodash": "^4.17.21"
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
   }
 }
