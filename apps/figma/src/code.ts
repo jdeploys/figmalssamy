@@ -37,7 +37,8 @@ figma.ui.onmessage = async (payload: PostPluginMessagePayload) => {
     if (!targetNode) {
       return;
     }
-    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     await figma.loadFontAsync(targetNode.fontName);
     targetNode.characters = payload.payload.text;
   }
