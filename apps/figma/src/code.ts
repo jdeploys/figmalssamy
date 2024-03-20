@@ -1,22 +1,44 @@
-figma.showUI(__html__, { height: 300, width: 350 });
+import { PostPluginMessagePayload } from './types';
 
-figma.on("selectionchange", async () => {
-  const firstSelected = figma.currentPage.selection[0];
-  figma.ui.postMessage({
-    type: "selection-change",
-    isComponentSelected: figma.currentPage.selection.length > 0,
-    selection:
-      firstSelected?.type === "FRAME"
-        ? firstSelected
-            .findAll((row) => row.type === "TEXT")
-            // @ts-ignore
-            .map((textNode: TextNode) => {
-              console.log(textNode);
-              return {
-                id: textNode.id,
-                characters: textNode.characters,
-              };
-            })
-        : [],
+figma.showUI(__html__, { height: 600, width: 350 });
+
+figma.on('run', async () => {
+  await figma.loadFontAsync({
+    family: 'Pretendard',
+    style: 'Regular',
   });
 });
+
+const getSelectionList = () => {
+  const firstSelected = figma.currentPage.selection[0];
+  return (
+    firstSelected?.type === 'FRAME'
+      ? firstSelected.findAll((row) => row.type === 'TEXT')
+      : []
+  ) as TextNode[];
+};
+
+figma.on('selectionchange', async () => {
+  figma.ui.postMessage({
+    type: 'selection-change',
+    selection: getSelectionList().map((textNode) => {
+      return {
+        id: textNode.id,
+        characters: textNode.characters,
+      };
+    }),
+  });
+});
+
+figma.ui.onmessage = async (payload: PostPluginMessagePayload) => {
+  if (payload.type === 'updateText') {
+    const selectionList = getSelectionList();
+    const targetNode = selectionList.find((row) => row.id === payload.payload.nodeId);
+    if (!targetNode) {
+      return;
+    }
+    // @ts-ignore
+    await figma.loadFontAsync(targetNode.fontName);
+    targetNode.characters = payload.payload.text;
+  }
+};
