@@ -2,13 +2,6 @@ import { PostPluginMessagePayload } from './types';
 
 figma.showUI(__html__, { height: 600, width: 350 });
 
-figma.on('run', async () => {
-  await figma.loadFontAsync({
-    family: 'Pretendard',
-    style: 'Regular',
-  });
-});
-
 const getSelectionList = () => {
   const firstSelected = figma.currentPage.selection[0];
   return (
