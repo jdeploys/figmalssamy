@@ -22,10 +22,22 @@
     "ui": "./ui.html"
   },
   "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.1.4",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-switch": "^1.0.3",
+    "@radix-ui/react-toast": "^1.1.5",
+    "@types/diff": "^5.0.9",
     "axios": "^1.6.8",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "diff": "^5.2.0",
     "hanspell": "^0.9.7",
     "lodash": "^4.17.21",
-    "react": "^18.2.0"
+    "lucide-react": "^0.365.0",
+    "react": "^18.2.0",
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@figma/eslint-plugin-figma-plugins": "^0.15.0",

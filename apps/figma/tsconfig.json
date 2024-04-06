@@ -3,17 +3,18 @@
     "target": "es6",
     "lib": ["es2021", "dom"],
     "strict": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./node_modules/@figma"
-    ],
+    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
     "rootDir": "./",
     "outDir": "./dist",
     "jsx": "react-jsx",
     "allowJs": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@/src/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
