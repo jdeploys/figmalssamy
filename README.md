@@ -19,5 +19,8 @@
 
 MIT License
 
-## 데모
+## 피그마 플러그인
+https://www.figma.com/community/plugin/1351591895654343346
+
+## 스크린샷
 ![img.png](docs/sample.png)
